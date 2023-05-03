@@ -185,14 +185,3 @@ int main() {
 
 
 
-
-/*
-		for (b; b < wordLength; b++) {
-			if (word[b] == guess[i]) {
-				cout << word[b];
-				break;
-			} else {
-				break;
-			}
-		}
-		*/
