@@ -2,6 +2,7 @@
 #include <string>
 
 #define ARR_SIZE_DRUHSLOVA 23
+#define NOTHING ' '
 
 using namespace std;
 
@@ -119,8 +120,8 @@ void drawWord(string word) {
 	cout << endl;
 }
 
-int guessLetter(string word) {
-	int guessed = 0;
+bool guessLetter(string word) {
+	bool guessed = false;
 	char letter;
 	int wordLength = word.length();
 	string line = "_ ";
@@ -132,7 +133,7 @@ int guessLetter(string word) {
 	for (int i = 0; i < wordLength; i++) {
 		if (word[i] == letter) {
 			guessedIndicator[i] = word[i];
-			guessed = 1;
+			guessed = true;
 		} 
 	}
 	if (not guessed) {
@@ -141,6 +142,16 @@ int guessLetter(string word) {
 	cout << endl;
 
 	return guessed;
+}
+
+bool playerWinned(string word) {
+	bool winned = false;
+
+	if (guessedIndicator == word) {
+		winned = true;
+	} 
+
+	return winned;
 }
 
 int main() { 
@@ -156,10 +167,8 @@ int main() {
 
 	druhslovicka = getWordType();	
 
-	char nothing = ' ';
-
 	for (int i = 0; i < word.length(); i++) {
-		guessedIndicator = guessedIndicator + nothing;
+		guessedIndicator = guessedIndicator + NOTHING;
 	}
 	
 
@@ -169,27 +178,22 @@ int main() {
 		drawWord(word);
 		drawField(word);
 
-		if (guessedIndicator == word) {
-			cout << "Gratulujem!! Vyhral si!" << endl;
+		if (playerWinned(word)) {
+			cout << "Gratulujem! Vyhral si!" << endl << endl;
 			running = 0;
 			break;
-		}
-
-		if (not guessLetter(word)) {
+		} 
+		if (not guessLetter(word)) { 
 			if (stage < 4) {
 				stage++;	
-			}	else {
-				cout << endl << "Prehral si :(" << endl;
+			} else {
+				cout << endl << "Smola, Prehral si! :(" << endl;
 				cout << "Slovo bolo: " << word << endl;
 				running = 0;
 				break;
 			}
-		} 
-		
-
+		}
 	}
-
-
 	return 0;
 }
 
