@@ -13,8 +13,11 @@ const string druhSlova[ARR_SIZE_DRUHSLOVA] = {
 };
 
 
-void enterWord() {
-
+string enterWord() {
+	string word;
+	cout << "Zadaj Slovo: ";
+	cin >> word;
+	return word;
 }
 
 void drawHang(int stage, string druhslovicka) {
@@ -77,7 +80,6 @@ void drawField(string word) {
 }
 
 void drawWord(string word) {
-	//guessedIndicator = word;
 
 	cout << "   ";
 
@@ -122,8 +124,8 @@ int main() {
 	for (int i = 0; i < 50; i++) {
 		cout << endl;
 	}
-	cout << "Zadaj Slovo: ";
-	cin >> word;
+	word = enterWord();	
+
 	for (int i = 0; i < ARR_SIZE_DRUHSLOVA; i++) {
 		cout << i << ")" << druhSlova[i] << endl;
 	}
