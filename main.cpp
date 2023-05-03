@@ -7,10 +7,10 @@
 using namespace std;
 
 string guessedIndicator;
-string zlePismena;
+string wrongGuesses;
 
-const string druhSlova[ARR_SIZE_DRUHSLOVA] = {
-	"zviera", "v dome", "oblecenie", "jedlo", "osobne", "povolanie", "v kupelni", "telo", "pocitac", "sport", "v kuchyni", "priroda", "hudba", "predmet", "dopravny prostriedok", "v nemocnici", "stavba", "miesto", "predmet v skole", "krajina", "v zahrade", "vlastnost", "farba"
+const string wordTypes[ARR_SIZE_DRUHSLOVA] = {
+	"Animal", "In House", "Clothing", "Food", "Personal", "Job", "In Bathroom", "Body", "Computer", "Sport", "In Kitchen", "Nature", "Music", "Thing", "Vehicle", "In Hospital", "Building", "Place", "School Subject", "Country", "In Garden", "Color", "Properties"
 };
 
 void printEmptyLines(int numberOfLines) {
@@ -21,41 +21,41 @@ void printEmptyLines(int numberOfLines) {
 
 string enterWord() {
 	string word;
-	cout << "Zadaj Slovo: ";
+	cout << "Enter Word: ";
 	cin >> word;
 	return word;
 }
 
 string getWordType() {
-	int typslova;
-	string druhslovicka;
+	int wordTypeNumber;
+	string wordType;
 
 	for (int i = 0; i < ARR_SIZE_DRUHSLOVA; i++) {
-		cout << i << ")" << druhSlova[i] << endl;
+		cout << i << ")" << wordTypes[i] << endl;
 	}
-	cout << 23 << ")" << "Ine" << endl;
+	cout << 23 << ")" << "Other" << endl;
 
-	cout << endl << "Vyber typ slova: ";
-	cin >> typslova;
+	cout << endl << "Enter number of word type: ";
+	cin >> wordTypeNumber;
 
-	if (typslova < 23) {
+	if (wordTypeNumber < 23) {
 		printEmptyLines(50);
-		druhslovicka = druhSlova[typslova];
-	} else if (typslova = 23) {
-		string inytyp;
-		cout << "Zadajte Druh Slova: ";
-		cin >> inytyp; 
+		wordType = wordTypes[wordTypeNumber];
+	} else if (wordTypeNumber = 23) {
+		string otherWordType;
+		cout << "Enter word type: ";
+		cin >> otherWordType; 
 
 		printEmptyLines(50);
-		druhslovicka = inytyp;
+		wordType = otherWordType;
 	}
-	return druhslovicka;
+	return wordType;
 }
 
-void drawHang(int stage, string druhslovicka) {
+void drawHang(int stage, string wordType) {
 	printEmptyLines(50);
 
-	cout << "    " << druhslovicka;
+	cout << "    " << wordType;
 
 	cout << endl;
 	cout << "		/-----" << endl;
@@ -107,7 +107,7 @@ void drawField(string word) {
 	}
 
 	cout << endl;
-	cout << "Nespravne pismena: " << zlePismena << endl;
+	cout << "Wrong guesses: " << wrongGuesses << endl;
 }
 
 void drawWord(string word) {
@@ -127,7 +127,7 @@ bool guessLetter(string word) {
 	string line = "_ ";
 
 	cout << endl;
-	cout << "Hadaj pismeno: ";
+	cout << "Guess Letter: ";
 	cin >> letter;
 
 	for (int i = 0; i < wordLength; i++) {
@@ -137,7 +137,7 @@ bool guessLetter(string word) {
 		} 
 	}
 	if (not guessed) {
-		zlePismena = zlePismena + letter + ", ";
+		wrongGuesses = wrongGuesses + letter + ", ";
 	}
 	cout << endl;
 
@@ -160,12 +160,12 @@ int main() {
 	int typslova;
 
 	string word;
-	string druhslovicka;
+	string wordType;
 	
 	printEmptyLines(50);
 	word = enterWord();	
 
-	druhslovicka = getWordType();	
+	wordType = getWordType();	
 
 	for (int i = 0; i < word.length(); i++) {
 		guessedIndicator = guessedIndicator + NOTHING;
@@ -174,12 +174,12 @@ int main() {
 
 	while (running == 1) {
 		
-		drawHang(stage, druhslovicka);
+		drawHang(stage, wordType);
 		drawWord(word);
 		drawField(word);
 
 		if (playerWinned(word)) {
-			cout << "Gratulujem! Vyhral si!" << endl << endl;
+			cout << "Congratulations, YOU WON!" << endl << endl;
 			running = 0;
 			break;
 		} 
@@ -187,8 +187,8 @@ int main() {
 			if (stage < 4) {
 				stage++;	
 			} else {
-				cout << endl << "Smola, Prehral si! :(" << endl;
-				cout << "Slovo bolo: " << word << endl;
+				cout << endl << "YOU LOSE! :(" << endl;
+				cout << "The word was " << word << "." << endl;
 				running = 0;
 				break;
 			}
