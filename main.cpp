@@ -13,6 +13,10 @@ const string druhSlova[ARR_SIZE_DRUHSLOVA] = {
 };
 
 
+void enterWord() {
+
+}
+
 void drawHang(int stage, string druhslovicka) {
 	for (int i = 0; i < 50; i++) {
 			cout << endl;
