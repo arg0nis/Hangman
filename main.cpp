@@ -25,6 +25,10 @@ string enterWord() {
 	return word;
 }
 
+void printWordTypes() {
+
+}
+
 void drawHang(int stage, string druhslovicka) {
 	printEmptyLines(50);
 
@@ -136,18 +140,14 @@ int main() {
 	cin >> typslova;
 
 	if (typslova < 23) {
-		for (int i = 0; i < 50; i++) {
-			cout << endl;
-		}
+		printEmptyLines(50);
 		druhslovicka = druhSlova[typslova];
 	} else if (typslova = 23) {
 		string inytyp;
 		cout << "Zadajte Druh Slova: ";
 		cin >> inytyp; 
 
-		for (int i = 0; i < 50; i++) {
-			cout << endl;
-		}
+		printEmptyLines(50);
 		druhslovicka = inytyp;
 	}
 
