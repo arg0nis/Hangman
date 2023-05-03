@@ -19,6 +19,11 @@ string enterWord() {
 	cin >> word;
 	return word;
 }
+void printEmptyLines() {
+	for (int i = 0; i < 50; i++) {
+		cout << endl;
+	}
+}
 
 void drawHang(int stage, string druhslovicka) {
 	for (int i = 0; i < 50; i++) {
@@ -121,9 +126,7 @@ int main() {
 	string word;
 	string druhslovicka;
 	
-	for (int i = 0; i < 50; i++) {
-		cout << endl;
-	}
+	
 	word = enterWord();	
 
 	for (int i = 0; i < ARR_SIZE_DRUHSLOVA; i++) {
