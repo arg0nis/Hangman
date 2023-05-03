@@ -12,6 +12,11 @@ const string druhSlova[ARR_SIZE_DRUHSLOVA] = {
 	"zviera", "v dome", "oblecenie", "jedlo", "osobne", "povolanie", "v kupelni", "telo", "pocitac", "sport", "v kuchyni", "priroda", "hudba", "predmet", "dopravny prostriedok", "v nemocnici", "stavba", "miesto", "predmet v skole", "krajina", "v zahrade", "vlastnost", "farba"
 };
 
+void printEmptyLines(int numberOfLines) {
+	for (int i = 0; i < numberOfLines; i++) {
+		cout << endl;
+	}
+}
 
 string enterWord() {
 	string word;
@@ -19,18 +24,11 @@ string enterWord() {
 	cin >> word;
 	return word;
 }
-void printEmptyLines() {
-	for (int i = 0; i < 50; i++) {
-		cout << endl;
-	}
-}
 
 void drawHang(int stage, string druhslovicka) {
-	for (int i = 0; i < 50; i++) {
-			cout << endl;
-	}
-	cout << "    " << druhslovicka;
+	printEmptyLines(50);
 
+	cout << "    " << druhslovicka;
 
 	cout << endl;
 	cout << "		/-----" << endl;
@@ -80,17 +78,18 @@ void drawField(string word) {
 		cout << "_ ";
 
 	}
+
 	cout << endl;
 	cout << "Nespravne pismena: " << zlePismena << endl;
 }
 
 void drawWord(string word) {
-
 	cout << "   ";
 
 	for (int i = 0; i < word.length(); i++) {
 		cout << guessedIndicator[i] << " ";
 	}
+
 	cout << endl;
 }
 
@@ -126,7 +125,7 @@ int main() {
 	string word;
 	string druhslovicka;
 	
-	
+	printEmptyLines(50);
 	word = enterWord();	
 
 	for (int i = 0; i < ARR_SIZE_DRUHSLOVA; i++) {
