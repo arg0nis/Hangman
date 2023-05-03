@@ -25,8 +25,30 @@ string enterWord() {
 	return word;
 }
 
-void printWordTypes() {
+string getWordType() {
+	int typslova;
+	string druhslovicka;
 
+	for (int i = 0; i < ARR_SIZE_DRUHSLOVA; i++) {
+		cout << i << ")" << druhSlova[i] << endl;
+	}
+	cout << 23 << ")" << "Ine" << endl;
+
+	cout << endl << "Vyber typ slova: ";
+	cin >> typslova;
+
+	if (typslova < 23) {
+		printEmptyLines(50);
+		druhslovicka = druhSlova[typslova];
+	} else if (typslova = 23) {
+		string inytyp;
+		cout << "Zadajte Druh Slova: ";
+		cin >> inytyp; 
+
+		printEmptyLines(50);
+		druhslovicka = inytyp;
+	}
+	return druhslovicka;
 }
 
 void drawHang(int stage, string druhslovicka) {
@@ -132,24 +154,7 @@ int main() {
 	printEmptyLines(50);
 	word = enterWord();	
 
-	for (int i = 0; i < ARR_SIZE_DRUHSLOVA; i++) {
-		cout << i << ")" << druhSlova[i] << endl;
-	}
-	cout << 23 << ")" << "Ine" << endl;
-	cout << endl << "Vyber typ slova: ";
-	cin >> typslova;
-
-	if (typslova < 23) {
-		printEmptyLines(50);
-		druhslovicka = druhSlova[typslova];
-	} else if (typslova = 23) {
-		string inytyp;
-		cout << "Zadajte Druh Slova: ";
-		cin >> inytyp; 
-
-		printEmptyLines(50);
-		druhslovicka = inytyp;
-	}
+	druhslovicka = getWordType();	
 
 	char nothing = ' ';
 
